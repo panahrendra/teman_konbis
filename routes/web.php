@@ -21,6 +21,7 @@ Route::get('/dashboard/{data_id}/edit', 'tembisController@edit');
 Route::post('/dashboard/{data_id}/update', 'tembisController@update');
 Route::get('/dashboard/{data_id}/delete', 'tembisController@delete');
 
+Route::get('filter', 'tembisController@filter')->name('tembis.filter');
 Route::get('/dashboard/sksp/{data_id}', 'tembisController@sortsksp')->name('tembis.sortsksp');
 Route::get('/dashboard/jsp/{data_id}', 'tembisController@sortjsp')->name('tembis.sortjsp');
 

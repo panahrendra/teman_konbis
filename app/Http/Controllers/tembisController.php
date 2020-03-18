@@ -33,11 +33,13 @@ class tembisController extends Controller
     {
         session()->flush();
         $data_konbis = data_konbis::all();
+
         $sortjsp = data_konbis::select('jenis_sp')->groupBy('jenis_sp')->get();
         $sortsksp = data_konbis::select('skema_sp')->groupBy('skema_sp')->get();
         $sortkas = data_konbis::select('kategori_aset')->groupBy('kategori_aset')->get();
         $sortlosp = data_konbis::select('lokasi_obj_sp')->groupBy('lokasi_obj_sp')->get();
         $sortuser = data_konbis::select('user')->groupBy('user')->get();
+
         return view('dashboard', compact('data_konbis', 'sortsksp', 'sortjsp', 'sortkas', 'sortlosp', 'sortuser'));
     }
 
@@ -46,7 +48,29 @@ class tembisController extends Controller
         $data_konbis = data_konbis::all();
         return view('history', ['data_konbis' => $data_konbis]);
     }
+    public function filter()
+    {
+        $filter1 = request()->input('filter1');
+        $filter2 = request()->input('filter2');
+        $filter3 = request()->input('filter3');
+        $filter4 = request()->input('filter4');
+        $filter5 = request()->input('filter5');
+        // dd($filter1,$filter2,$filter3,$filter4,$filter5);
+        $data_konbis = data_konbis::where('jenis_sp', 'like', $filter1 . '%')
+                                ->where('skema_sp', 'like', $filter2 . '%')
+                                ->where('kategori_aset', 'like' , $filter3 . '%')
+                                ->where('lokasi_obj_sp', 'like', $filter3 . '%')
+                                ->where('user','like', $filter5 . '%')
+                                ->get();
 
+        $sortjsp = data_konbis::select('jenis_sp')->groupBy('jenis_sp')->get();
+        $sortsksp = data_konbis::select('skema_sp')->groupBy('skema_sp')->get();
+        $sortkas = data_konbis::select('kategori_aset')->groupBy('kategori_aset')->get();
+        $sortlosp = data_konbis::select('lokasi_obj_sp')->groupBy('lokasi_obj_sp')->get();
+        $sortuser = data_konbis::select('user')->groupBy('user')->get();
+
+        return view('dashboard', compact('data_konbis', 'sortsksp', 'sortjsp', 'sortkas', 'sortlosp', 'sortuser'));
+    }
     public function report()
     {
         $data_konbis = data_konbis::all();

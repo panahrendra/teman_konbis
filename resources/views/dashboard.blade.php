@@ -45,11 +45,12 @@
                         <span aria-hidden="true">&times;</span></button>
                       <h4 class="modal-title">Sortir Kategori</h4>
                     </div>
+                    <form method="get" action="{{ route('tembis.filter') }}">
+                      @csrf
                     <div class="modal-body">
-                      <form method="post" action="">
                         <div class="form-group">
                           <label>Jenis Surat Perjanjian</label>
-                          <select class="form-control">
+                          <select class="form-control" name="filter1">
                             <option>Induk</option>
                             <option>Addendum<</option>
                           </select>
@@ -57,7 +58,7 @@
 
                         <div class="form-group">
                           <label>Skema Surat Perjanjian</label>
-                          <select class="form-control">
+                          <select class="form-control" name="filter2">
                             @foreach($sortsksp as $d )
                             <option>{{ $d->skema_sp }}</option>
                             @endforeach
@@ -66,7 +67,7 @@
 
                         <div class="form-group">
                           <label>Kategori Objek Kerjasama</label>
-                          <select class="form-control">
+                          <select class="form-control" name="filter3">
                             @foreach($sortkas as $d )
                             <option>{{ $d->kategori_aset }}</option>
                             @endforeach
@@ -75,7 +76,7 @@
 
                         <div class="form-group">
                           <label>Lokasi</label>
-                          <select class="form-control">
+                          <select class="form-control" name="filter4">
                             @foreach($sortlosp as $d )
                             <option>{{ $d->lokasi_obj_sp }}</option>
                             @endforeach
@@ -84,24 +85,24 @@
 
                         <div class="form-group">
                           <label>User</label>
-                          <select class="form-control">
+                          <select class="form-control" name="filter5">
                             @foreach($sortuser as $d )
                             <option>{{ $d->user }}</option>
                             @endforeach
                           </select>
                         </div>  
-                      </form>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">TUTUP</button>
-                      <button type="button" class="btn btn-outline">CARI</button>
+                      <input type="submit" class="btn btn-outline" name="cari" value="CARI">
                     </div>
+                    </form>
                   </div>
                 </div>
               </div>
 
               <!-- KATEGORI -->     
-              <div class="btn-group">
+              {{-- <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                     <span>Jenis SP <span class="caret"></span></span>
                   <span class="sr-only">Toggle Dropdown</span>
@@ -110,9 +111,9 @@
                   <li><a href="{{ route('tembis.sortjsp', 'Induk') }}">Induk</a></li>
                   <li><a href="{{ route('tembis.sortjsp', 'Addendum') }}">Addendum</a></li>
                 </ul>
-              </div>
+              </div> --}}
 
-              <div class="btn-group">
+              {{-- <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                     <span>Skema SP <span class="caret"></span></span>
                   <span class="sr-only">Toggle Dropdown</span>
@@ -122,7 +123,7 @@
                     <li><a href="{{ route('tembis.sortsksp', $d->skema_sp) }}">{{ $d->skema_sp }}</a></li>
                   @endforeach
                 </ul>
-              </div>
+              </div> --}}
 
               <div class="btn-group">
                 <a href="/" class="btn bg-red color-palette">Hapus Sortir</a>
