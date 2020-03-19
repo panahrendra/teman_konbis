@@ -51,6 +51,7 @@
                         <div class="form-group">
                           <label>Jenis Surat Perjanjian</label>
                           <select class="form-control" name="filter1">
+                            <option></option>
                             <option>Induk</option>
                             <option>Addendum</option>
                           </select>

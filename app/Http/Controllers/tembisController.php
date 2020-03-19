@@ -57,15 +57,18 @@ class tembisController extends Controller
         $filter5 = request()->input('filter5');
         $filter6 = request()->input('filter6');
         $filter7 = request()->input('filter7');
-        // dd($filter1,$filter2,$filter3,$filter4,$filter5);
+        
         $data_konbis = data_konbis::where('jenis_sp', 'LIKE', $filter1 . '%')
                                   ->where('skema_sp', 'LIKE', $filter2 . '%')
                                   ->where('kategori_aset', 'LIKE' , $filter3 . '%')
                                   ->where('lokasi_obj_sp', 'LIKE', $filter4 . '%')
                                   ->where('user','LIKE', $filter5 . '%')
-                                  ->whereDate('tgl_mulai','>=', $filter6)
-                                  ->whereDate('tgl_akhir','<=', $filter7)
+                                  ->where('tgl_mulai','>=', $filter6)
+                                  ->where('tgl_akhir','<=', $filter7)
                                   ->get();
+
+        dd($filter1,$filter2,$filter3,$filter4,$filter5, $filter6, $filter7,
+            $data_konbis);
 
         $sortjsp = data_konbis::select('jenis_sp')->groupBy('jenis_sp')->get();
         $sortsksp = data_konbis::select('skema_sp')->groupBy('skema_sp')->get();
