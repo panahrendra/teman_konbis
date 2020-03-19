@@ -19,9 +19,9 @@ class tembisController extends Controller
         $usertb = DB::table('usertb')
                 ->join('uk_user','usertb.user_id','=','uk_user.user_id')
                 ->join('unit_kerja','uk_user.uk_id','=','unit_kerja.uk_id')
-                ->where('usertb.user_id','like','%'.$npk.'%')
-                ->where('usertb.user_nm','like','%'.$nm.'%')
-                ->where('unit_kerja.uk_nm','like','%'.$uknm.'%')
+                ->where('usertb.user_id','LIKE','%'.$npk.'%')
+                ->where('usertb.user_nm','LIKE','%'.$nm.'%')
+                ->where('unit_kerja.uk_nm','LIKE','%'.$uknm.'%')
                 ->get();
         */
         $usertb = dt_user::all();                
@@ -55,13 +55,17 @@ class tembisController extends Controller
         $filter3 = request()->input('filter3');
         $filter4 = request()->input('filter4');
         $filter5 = request()->input('filter5');
+        $filter6 = request()->input('filter6');
+        $filter7 = request()->input('filter7');
         // dd($filter1,$filter2,$filter3,$filter4,$filter5);
-        $data_konbis = data_konbis::where('jenis_sp', 'like', $filter1 . '%')
-                                ->where('skema_sp', 'like', $filter2 . '%')
-                                ->where('kategori_aset', 'like' , $filter3 . '%')
-                                ->where('lokasi_obj_sp', 'like', $filter3 . '%')
-                                ->where('user','like', $filter5 . '%')
-                                ->get();
+        $data_konbis = data_konbis::where('jenis_sp', 'LIKE', $filter1 . '%')
+                                  ->where('skema_sp', 'LIKE', $filter2 . '%')
+                                  ->where('kategori_aset', 'LIKE' , $filter3 . '%')
+                                  ->where('lokasi_obj_sp', 'LIKE', $filter4 . '%')
+                                  ->where('user','LIKE', $filter5 . '%')
+                                  ->whereDate('tgl_mulai','>=', $filter6)
+                                  ->whereDate('tgl_akhir','<=', $filter7)
+                                  ->get();
 
         $sortjsp = data_konbis::select('jenis_sp')->groupBy('jenis_sp')->get();
         $sortsksp = data_konbis::select('skema_sp')->groupBy('skema_sp')->get();

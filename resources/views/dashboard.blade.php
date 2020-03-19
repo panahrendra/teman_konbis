@@ -52,7 +52,7 @@
                           <label>Jenis Surat Perjanjian</label>
                           <select class="form-control" name="filter1">
                             <option>Induk</option>
-                            <option>Addendum<</option>
+                            <option>Addendum</option>
                           </select>
                         </div>
 
@@ -90,7 +90,31 @@
                             <option>{{ $d->user }}</option>
                             @endforeach
                           </select>
-                        </div>  
+                        </div>
+
+                        <div class="form-group">
+                          <table width="100%">
+                            <tr>
+                              <td><label>Tanggal Awal</label>
+                              <div class="input-group date">
+                                <div class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" name="filter6" class="form-control" id="datepicker1">
+                              </div></td>
+
+                              <td><?php echo "<font color='#3c8dbc'>______</font>"; ?></td>
+
+                              <td><label>Tanggal Akhir</label>
+                              <div class="input-group date">
+                                <div class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" name="filter7" class="form-control" id="datepicker2">
+                              </div></td>
+                            </tr>
+                          </table>
+                        </div>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">TUTUP</button>
@@ -126,7 +150,7 @@
               </div> --}}
 
               <div class="btn-group">
-                <a href="/" class="btn bg-red color-palette">Hapus Sortir</a>
+                <a href="/" class="btn bg-red color-palette">HAPUS SORTIR</a>
               </div>
               
 
