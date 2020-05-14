@@ -7,7 +7,7 @@
     font-style:  
   }
 </style>
-<section class="content-header">
+    <section class="content-header">
       <h1>
         ACCOUNT PROFILE
         <br><small></small>
@@ -24,10 +24,15 @@
 
       <!-- Default box -->
       <div class="box box-info">
-        <div class="box-body">
-         <h3 clss="box-title">DATA USER</h3>
           <div class="box-header">
+            <h3 clss="box-title">DATA USER</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+          </div>
 
+            <div class="box-body">
 	            <form>
 	            	<table width="50%">
 	            		<tr>
@@ -64,8 +69,17 @@
 	            	</table>
 	            </form>
 	            <br>
-	        </div>
+	          </div>
+      </div>
+
+      <div class="box box-info">
+          <div class="box-header">
 	            <h3 class="box-title">USER YANG TERDAFTAR</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+          </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="tuser" class="table table-bordered table-striped">
@@ -93,14 +107,14 @@
                 </tbody>
               </table>
             </div>
-        </div>
+        
         <!-- /.box-body -->
         <div class="box-footer">
           <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
                 <i class="fa fa-user-plus"> Tambah User</i>
-		  </button>
+		      </button>
 
-		  <div class="modal fade" id="modal-default">
+		    <div class="modal fade" id="modal-default">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -149,9 +163,9 @@
           	</div>
       	  </div>
   		  </div>
-        </div>
-        <!-- /.box-footer--> 
       </div>
+    </div>
+        <!-- /.box-footer--> 
       <!-- /.box -->     
     </section>
 @endsection 

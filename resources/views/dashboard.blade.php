@@ -46,7 +46,7 @@
                       <h4 class="modal-title">Sortir Kategori</h4>
                     </div>
                     <form method="get" action="{{ route('tembis.filter') }}">
-                      @csrf
+                      {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">
                           <label>Jenis Surat Perjanjian</label>
@@ -60,6 +60,7 @@
                         <div class="form-group">
                           <label>Skema Surat Perjanjian</label>
                           <select class="form-control" name="filter2">
+                            <option></option>
                             @foreach($sortsksp as $d )
                             <option>{{ $d->skema_sp }}</option>
                             @endforeach
@@ -69,6 +70,7 @@
                         <div class="form-group">
                           <label>Kategori Objek Kerjasama</label>
                           <select class="form-control" name="filter3">
+                            <option></option>
                             @foreach($sortkas as $d )
                             <option>{{ $d->kategori_aset }}</option>
                             @endforeach
@@ -78,6 +80,7 @@
                         <div class="form-group">
                           <label>Lokasi</label>
                           <select class="form-control" name="filter4">
+                            <option></option>
                             @foreach($sortlosp as $d )
                             <option>{{ $d->lokasi_obj_sp }}</option>
                             @endforeach
@@ -87,6 +90,7 @@
                         <div class="form-group">
                           <label>User</label>
                           <select class="form-control" name="filter5">
+                            <option></option>
                             @foreach($sortuser as $d )
                             <option>{{ $d->user }}</option>
                             @endforeach

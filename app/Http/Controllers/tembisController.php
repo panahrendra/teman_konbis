@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\data_konbis;
 use App\Models\dt_user;
+use App\Models\vw_sp;
+use App\Models\detil_sp;
+use App\Models\users;
+use App\Models\kategori;
 
 class tembisController extends Controller
 {
@@ -43,11 +47,42 @@ class tembisController extends Controller
         return view('dashboard', compact('data_konbis', 'sortsksp', 'sortjsp', 'sortkas', 'sortlosp', 'sortuser'));
     }
 
+    public function konbis()
+    {
+        $sp_tb = vw_sp::groupBy('no')->get();
+        $sp_tb_detil = detil_sp::all();
+        return view('sp', compact('sp_tb', 'sp_tb_detil'));
+    }
+
+    public function detilsp($id)
+    {
+        $add = 'Addendum';
+        $sp_tb_detil = detil_sp::find($id);
+        $sp_tb_add = detil_sp::where('id_sp', 'LIKE', $id. '%')
+                             ->where('jenis', 'LIKE', $add. '%')
+                             ->get();
+        return view('detilsp', compact('sp_tb_detil', 'sp_tb_add'));
+    }
+
+    public function user()
+    {
+        $user = users::all();
+        return view('muser', ['user' => $user]);
+    }
+
+    public function kategori()
+    {
+        $kategori = kategori::all();
+        return view('mkategori', ['kategori' => $kategori]);
+    }
+
     public function history()
     {
         $data_konbis = data_konbis::all();
         return view('history', ['data_konbis' => $data_konbis]);
     }
+
+
     public function filter()
     {
         $filter1 = request()->input('filter1');
@@ -62,13 +97,12 @@ class tembisController extends Controller
                                   ->where('skema_sp', 'LIKE', $filter2 . '%')
                                   ->where('kategori_aset', 'LIKE' , $filter3 . '%')
                                   ->where('lokasi_obj_sp', 'LIKE', $filter4 . '%')
-                                  ->where('user','LIKE', $filter5 . '%')
-                                  ->where('tgl_mulai','>=', $filter6)
-                                  ->where('tgl_akhir','<=', $filter7)
+                                  ->where('user', 'LIKE', $filter5 . '%')
+                                  ->where('tgl_mulai', '>=', $filter6)
+                                  ->where('tgl_akhir', '<=', $filter7)
                                   ->get();
 
-        dd($filter1,$filter2,$filter3,$filter4,$filter5, $filter6, $filter7,
-            $data_konbis);
+        /*dd($filter1,$filter2,$filter3,$filter4,$filter5, $filter6, $filter7, $data_konbis);*/
 
         $sortjsp = data_konbis::select('jenis_sp')->groupBy('jenis_sp')->get();
         $sortsksp = data_konbis::select('skema_sp')->groupBy('skema_sp')->get();
@@ -76,8 +110,9 @@ class tembisController extends Controller
         $sortlosp = data_konbis::select('lokasi_obj_sp')->groupBy('lokasi_obj_sp')->get();
         $sortuser = data_konbis::select('user')->groupBy('user')->get();
 
-        return view('dashboard', compact('data_konbis', 'sortsksp', 'sortjsp', 'sortkas', 'sortlosp', 'sortuser'));
+        return view('dashboard', compact('data_konbis', 'sortjsp', 'sortsksp', 'sortkas', 'sortlosp', 'sortuser'));
     }
+
     public function report()
     {
         $data_konbis = data_konbis::all();
@@ -93,7 +128,7 @@ class tembisController extends Controller
             session()->flashInput(['jsp' => $data_id]);
         }else{
             $data_konbis = data_konbis::where('jenis_sp', 'LIKE',$data_id . '%')->get();
-            session()->flashInput(['jsp' => $data_id]);    
+            session()->flashInput(['jsp' => $data_id]);
         }
         $sortjsp = data_konbis::select('jenis_sp')->groupBy('jenis_sp')->get();
         $sortsksp = data_konbis::select('skema_sp')->groupBy('skema_sp')->get();

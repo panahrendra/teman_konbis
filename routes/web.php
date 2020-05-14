@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'tembisController@dash');
+Route::get('/', 'tembisController@konbis');
+Route::get('/sp', 'tembisController@konbis');
+Route::get('/sp/{id}/detilsp', 'tembisController@detilsp');
+
 Route::get('dashboard', 'tembisController@dash');
 Route::get('/dashboard/tambah', 'tembisController@tambah');
 Route::post('/dashboard/store', 'tembisController@store');
@@ -25,12 +28,14 @@ Route::get('filter', 'tembisController@filter')->name('tembis.filter');
 Route::get('/dashboard/sksp/{data_id}', 'tembisController@sortsksp')->name('tembis.sortsksp');
 Route::get('/dashboard/jsp/{data_id}', 'tembisController@sortjsp')->name('tembis.sortjsp');
 
-
 Route::get('/history', 'tembisController@history');
 
 Route::get('/report', 'tembisController@report');
 
 Route::get('/user', 'tembisController@dtuser');
+
+Route::get('/muser', 'tembisController@user');
+Route::get('/mkategori', 'tembisController@kategori');
 
 Route::get('/approve', function () {
     return view('approve');

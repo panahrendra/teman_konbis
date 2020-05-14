@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class dt_user extends Model
+class detil_sp extends Model
 {
-	protected $table = "dt_user";
+    protected $table = "vw_detil_sp";
 }

@@ -98,6 +98,32 @@
 <script src="{{url('adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{url('adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
 
+<script src="{{url('blink.js')}}"></script>
+
+<script>
+  function kelapKelip() {
+      $('#coba2').fadeOut(); 
+      $('#coba2').fadeIn(); 
+      }
+  setInterval(kelapKelip, 1000); 
+</script>
+
+<script>
+  function kelapKelip() {
+      $('#coba').fadeOut(); 
+      $('#coba').fadeIn(); 
+      }
+  setInterval(kelapKelip, 1000); 
+</script>
+
+<script>
+  function kelapKelip() {
+      $('#coba1').fadeOut(); 
+      $('#coba1').fadeIn(); 
+      }
+  setInterval(kelapKelip, 2000); 
+</script>
+
 <script>
   $(function () {
     $('#tq1').DataTable()
