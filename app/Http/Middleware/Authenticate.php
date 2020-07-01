@@ -26,7 +26,7 @@ class Authenticate extends Middleware
       return redirect('/user');
       
     }else{
-      return redirect('/');
+      return redirect('/')->with('error', 'Username atau Password anda salah');
     }
   }
 }

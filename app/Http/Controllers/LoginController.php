@@ -32,7 +32,7 @@ class LoginController extends Controller
     } else if (Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password])) {
       return redirect()->intended('/user');
     }else{
-      return redirect('/');
+      return redirect('/')->with('error', 'Username atau Password anda salah');
     }
 
   }

@@ -67,22 +67,14 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{url('adminlte/dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
-              @if (auth('admin'))
-              <span class="hidden-xs">{{ Auth::guard('admin')->user()->name }}</span>
-              @else
-              <span class="hidden-xs">{{ Auth::guard('user')->user()->name }}</span>
-              @endif
+                <span class="hidden-xs">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
                 <img src="{{url('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
                 <p>
-                  @if (Auth::guard('admin'))
-                  <span class="hidden-xs">{{ Auth::guard('admin')->user()->name }}</span>
-                  @else
-                  <span class="hidden-xs">{{ Auth::guard('user')->user()->name }}</span>
-                  @endif
+                  <span class="hidden-xs">{{ Auth::user()->name }}</span>
                 </p>
               </li>
               <!-- Menu Body -->
