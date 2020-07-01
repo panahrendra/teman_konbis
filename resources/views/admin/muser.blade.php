@@ -3,9 +3,7 @@
 
 @section('content')
 <style type="text/css">
-  .hid{
-    font-style:  
-  }
+  
 </style>
     <section class="content-header">
       <h1>
@@ -26,7 +24,7 @@
 
       <div class="box box-info">
           <div class="box-header">
-	            <h3 class="box-title">MASTER KATEGORI</h3>
+	            <h3 class="box-title">MASTER USER</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -34,18 +32,20 @@
           </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="tuser" class="table table-bordered table-striped">
+              <table id="tdash" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th><center>ID</center></th>
-                  <th><center>JENIS KATEGORI</center></th>
+                  <th><center>NAMA</center></th>
+                  <th><center>ROLE</center></th>
+                  <th><center>EMAIL</center></th>
                 </tr>
                 </thead>
                 <tbody>  
-                @foreach($kategori as $k)
+                @foreach($user as $u)
                 <tr>
-                  <td>{{ $k->id }}</td>
-                  <td>{{ $k->kategori_sp }}</td>
+                  <td>{{ $u->nama }}</td>
+                  <td>{{ $u->role }}</td>
+                  <td>{{ $u->email }}</td>
                 </tr>
                 @endforeach
                 </tbody>

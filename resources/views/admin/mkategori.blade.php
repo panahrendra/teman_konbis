@@ -3,7 +3,9 @@
 
 @section('content')
 <style type="text/css">
-  
+  .hid{
+    font-style:  
+  }
 </style>
     <section class="content-header">
       <h1>
@@ -24,7 +26,7 @@
 
       <div class="box box-info">
           <div class="box-header">
-	            <h3 class="box-title">MASTER USER</h3>
+	            <h3 class="box-title">MASTER KATEGORI</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -32,20 +34,18 @@
           </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="tuser" class="table table-bordered table-striped">
+              <table id="tdash" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th><center>NAMA</center></th>
-                  <th><center>ROLE</center></th>
-                  <th><center>EMAIL</center></th>
+                  <th><center>ID</center></th>
+                  <th><center>JENIS KATEGORI</center></th>
                 </tr>
                 </thead>
                 <tbody>  
-                @foreach($user as $u)
+                @foreach($kategori as $k)
                 <tr>
-                  <td>{{ $u->nama }}</td>
-                  <td>{{ $u->role }}</td>
-                  <td>{{ $u->email }}</td>
+                  <td>{{ $k->id }}</td>
+                  <td>{{ $k->kategori_sp }}</td>
                 </tr>
                 @endforeach
                 </tbody>
@@ -54,7 +54,7 @@
         
         <!-- /.box-body -->
         <div class="box-footer">
-        
+          <a href="/sp/tambahkategori"><button type="button" class="btn btn-default"><i class="fa fa-plus"> Tambah Kategori</i></button></a>
         </div>
     </div>
         <!-- /.box-footer--> 

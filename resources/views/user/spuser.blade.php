@@ -20,10 +20,15 @@
     <!-- Main content -->
     <section class="content">
 
-      <!-- Default box -->
+      <!-- Default box --> 
           <div class="box box-danger">
             
             <div class="box-body">
+              @if (session('Sukses'))
+                <div class="alert alert-success" role="alert">
+                  <center>{{(session('Sukses'))}}</center>
+                </div><br>
+              @endif
               <br>
               <table id="tdash" class="table table-bordered table-hover">
                 <thead>
@@ -33,8 +38,7 @@
                   <th id="tidak">PERUSAHAAN INSTANSI</th>
                   <th id="tidak">JUDUL PERJANJIAN</th>
                   <th id="tidak">KATEGORI SP</th>
-                  <th id="tidak">OPSI</th>
-                  <th id="tidak">HAPUS</th>
+                  <th id="tidak">DETIL</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -47,29 +51,14 @@
                   <td>{{ $sp->judul }}</td>
                   <td>{{ $sp->kategori_sp }}</td>
                   <td><center><a href="/sp/{{$sp->id}}/detilsp"><button type="button" class="btn btn-primary"><i class="fa fa-info-circle"></i></button></a></center></td>
-                  <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger"><i class="fa fa-trash"></i></button></td>
                 </tr>
                 @endforeach
                 </tbody>
               </table>
-
-              <div class="modal modal-danger fade" id="modal-danger">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-body">
-                      <center><label>Yakin ingin menghapus data ini ?</label></center>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">TUTUP</button>
-                      <a href=""><button type="button" class="btn btn-outline">HAPUS</button></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
         <!-- /.box-body -->
           <div class="box-footer">
-            <a href="/dashboard/tambah"><button type="button" class="btn btn-default"><i class="fa fa-plus"> Tambah Perjanjian</i></button></a>
+            <a href="/sp/tambah"><button type="button" class="btn btn-default"><i class="fa fa-plus"> Tambah Perjanjian</i></button></a>
           </div>
            <!-- /.box-footer-->
         </div>

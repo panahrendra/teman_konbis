@@ -1,0 +1,173 @@
+@extends('layouts.app')
+
+
+@section('content')
+    <section class="content-header">
+      <h1>
+        TAMBAH SURAT PERJANJIAN
+        <br><small></small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Examples</a></li>
+        <li class="active">Blank page</li>
+      </ol>
+    </section>
+
+    <style type="text/css">
+      #iya{
+        font-weight: 800;
+      }
+    </style>
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="box">
+        <div class="box-header">
+            <a href="/sp"><button type="submit" class="btn btn-info">KEMBALI</button></a>
+        </div>
+          <div class="box-body">
+            <!-- /.box-header -->
+            <form method="post" action="/sp/store2" class="form-horizontal">
+              {{ csrf_field() }}
+                <table width="50%">
+                  <input type="hidden" name="id_sp" class="form-control" value="{{ $tbl_sp->id }}">
+
+                  <tr>
+                    <td class="col-sm-5" id="iya">Jenis ASET / JASA</td>
+                    <td><?php echo "<font color='white'>..</font>"; ?></td>
+                    <td>
+                        <select class="form-control" name="id_aset">
+	                    	<option></option>		
+	                    	@foreach($tbl_aset as $ta)
+	                    	<option value="{{ $ta->id }}">{{ $ta->keterangan }}</option>
+	                    	@endforeach
+	                  	</select>
+                    </td>
+                  </tr>
+                  
+                  <tr>
+                    <td><br></td>
+                  </tr>
+
+                  <tr>
+                    <td class="col-sm-5" id="iya">Jenis SP</td>
+                    <td><?php echo "<font color='white'>..</font>"; ?></td>
+                    <td>
+                    	<select class="form-control" name="jenis">
+                          <option></option>
+                          <option>Induk</option>
+                          <option>Addendum 1</option>
+                          <option>Addendum 2</option>
+                          <option>Addendum 3</option>
+                          <option>Addendum 4</option>
+                          <option>Addendum 5</option>
+                        </select>
+                    </td>
+                  </tr>
+                  
+                  <tr>
+                    <td><br></td>
+                  </tr>
+
+                  <tr>
+                    <td class="col-sm-5" id="iya">Objek SP</td>
+                    <td><?php echo "<font color='white'>..</font>"; ?></td>
+                    <td><input type="text" name="objek_sp" class="form-control" placeholder="Objek SP"></td>
+                  </tr>
+                  
+                  <tr>
+                    <td><br></td>
+                  </tr>
+
+                  <tr>
+                    <td class="col-sm-5" id="iya">Tanggal Mulai</td>
+                    <td><?php echo "<font color='white'>..</font>"; ?></td>
+                    <td>
+                      <div class="input-group date">
+                        <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" name="tgl_mulai" class="form-control" id="datepicker1">
+                      </div>
+                    </td>
+                  </tr>
+                  
+                  <tr>
+                    <td><br></td>
+                  </tr>
+
+                  <tr>
+                    <td class="col-sm-5" id="iya">Tanggal Akhir</td>
+                    <td><?php echo "<font color='white'>..</font>"; ?></td>
+                    <td>
+                      <div class="input-group date">
+                        <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" name="tgl_selesai" class="form-control" id="datepicker2">
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td><br></td>
+                  </tr>
+
+                  <tr>
+                    <td class="col-sm-5" id="iya">Nilai Fix</td>
+                    <td><?php echo "<font color='white'>..</font>"; ?></td>
+                    <td><input type="text" name="nilai_fix" class="form-control" placeholder="Nilai Fix"></td>
+                  </tr>
+                  
+                  <tr>
+                    <td><br></td>
+                  </tr>
+
+                  <tr>
+                    <td class="col-sm-5" id="iya">Nilai Formula</td>
+                    <td><?php echo "<font color='white'>..</font>"; ?></td>
+                    <td><input type="text" name="nilai_formula" class="form-control" placeholder="Nilai Formula"></td>
+                  </tr>
+                  
+                  <tr>
+                    <td><br></td>
+                  </tr>
+
+                  <tr>
+                    <td class="col-sm-5" id="iya">History</td>
+                    <td><?php echo "<font color='white'>..</font>"; ?></td>
+                    <td><input type="text" name="history" class="form-control" placeholder="History"></td>
+                  </tr>
+                  
+                  <tr>
+                    <td><br></td>
+                  </tr>
+
+                  <tr>
+                    <td class="col-sm-5" id="iya">Keterangan</td>
+                    <td><?php echo "<font color='white'>..</font>"; ?></td>
+                    <td><textarea type="text" name="keterangan" class="form-control" placeholder="Keterangan"></textarea></td>
+                  </tr>
+
+                  <tr>
+                    <td><br></td>
+                  </tr>
+
+                  <tr>
+                    <td><?php echo "<font color='white'>..</font>"; ?></td>
+                    <td><?php echo "<font color='white'>..</font>"; ?></td>
+                    <td><button type="submit" class="btn btn-info">SIMPAN</button></td>
+                  </tr>
+                </table>
+            </form>
+          </div>
+
+        <div class="box-footer">
+          Footer
+        </div>
+
+      </div>
+    </section>
+@endsection 

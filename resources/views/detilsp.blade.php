@@ -25,10 +25,9 @@
             <div class="box-body">
             <h3 clss="box-title">INDUK</h3>
               <br>
-              <table id="tdash" class="table table-bordered table-hover">
+              <table id="tq1" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th id="tidak">NO</th>
                   <th id="tidak">NO. SP</th>
                   <th id="tidak">PERUSAHAAN INSTANSI</th>
                   <th id="tidak">JUDUL PERJANJIAN</th>
@@ -41,13 +40,12 @@
                   <th id="tidak">NILAI FIX</th>
                   <th id="tidak">NILAI FORMULA</th>
                   <th id="tidak">HISTORY</th>
-                  <th id="tidak">KETERANGANS</th>
+                  <th id="tidak">KETERANGAN</th>
                 </tr>
                 </thead>
                 <tbody>
-                @php $no = 1; @endphp
+                
                 <tr>
-                  <td>{{ $no++ }}</td>
                   <td>{{ $sp_tb_detil->no }}</td>
                   <td>{{ $sp_tb_detil->instansi }}</td>
                   <td>{{ $sp_tb_detil->judul }}</td>
@@ -71,7 +69,7 @@
             <div class="box-body">
             <h3 clss="box-title">ADDENDUM</h3>
               <br>
-              <table id="tdash" class="table table-bordered table-hover">
+              <table class="table table-bordered table-hover">
                 <thead>
                 <tr>
                   <th id="tidak">NO</th>
@@ -87,7 +85,7 @@
                   <th id="tidak">NILAI FIX</th>
                   <th id="tidak">NILAI FORMULA</th>
                   <th id="tidak">HISTORY</th>
-                  <th id="tidak">KETERANGANS</th>
+                  <th id="tidak">KETERANGAN</th>
                 </tr>
                 </thead>
                 <tbody>

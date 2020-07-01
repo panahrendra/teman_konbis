@@ -98,8 +98,6 @@
 <script src="{{url('adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{url('adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
 
-<script src="{{url('blink.js')}}"></script>
-
 <script>
   function kelapKelip() {
       $('#coba2').fadeOut(); 
@@ -113,7 +111,7 @@
       $('#coba').fadeOut(); 
       $('#coba').fadeIn(); 
       }
-  setInterval(kelapKelip, 1000); 
+  setInterval(kelapKelip, 400); 
 </script>
 
 <script>
@@ -121,15 +119,15 @@
       $('#coba1').fadeOut(); 
       $('#coba1').fadeIn(); 
       }
-  setInterval(kelapKelip, 2000); 
+  setInterval(kelapKelip, 1400); 
 </script>
 
 <script>
   $(function () {
     $('#tq1').DataTable()
     $('#tq2').DataTable({
-      'lengthChange': true,
-      'paging'      : true,
+      'lengthChange': false,
+      'paging'      : false,
       'searching'   : false,
       'ordering'    : false,
       'info'        : false,
@@ -138,6 +136,19 @@
       'iDisplayLength': 2*/
     })
     $('#tdash').DataTable({
+      'lengthChange': true,
+      'paging'      : true,
+      'searching'   : false,
+      'ordering'    : false,
+      'info'        : false,
+      'autoWidth'   : true,
+      'aLengthMenu' : [[5, 10, 20, -1], [5, 10, 20, "Semua"]],
+      'iDisplayLength': 5,
+      'language'    :{
+        'url': "Indonesian.json"
+      }
+    })
+    $('#tdash2').DataTable({
       'lengthChange': true,
       'paging'      : true,
       'searching'   : false,

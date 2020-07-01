@@ -63,19 +63,26 @@
           </li>
 
           <!-- User Account: style can be found in dropdown.less -->
+
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{url('adminlte/dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              @if (auth('admin'))
+              <span class="hidden-xs">{{ Auth::guard('admin')->user()->name }}</span>
+              @else
+              <span class="hidden-xs">{{ Auth::guard('user')->user()->name }}</span>
+              @endif
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
                 <img src="{{url('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
-
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  @if (Auth::guard('admin'))
+                  <span class="hidden-xs">{{ Auth::guard('admin')->user()->name }}</span>
+                  @else
+                  <span class="hidden-xs">{{ Auth::guard('user')->user()->name }}</span>
+                  @endif
                 </p>
               </li>
               <!-- Menu Body -->
@@ -99,11 +106,16 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  @if (auth('admin'))
+                  <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
+                  @else
+                  <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
+                  @endif
                 </div>
               </li>
             </ul>
           </li>
+
         </ul>
       </div>
     </nav>
