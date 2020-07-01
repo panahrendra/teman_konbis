@@ -16,6 +16,7 @@ class Authenticate extends Middleware
    */
   protected function redirectTo($request)
   {
+
     if (Auth::guard('admin')->check()) {
 
       return redirect('/admin');
@@ -24,6 +25,8 @@ class Authenticate extends Middleware
 
       return redirect('/user');
       
+    }else{
+      return redirect('/');
     }
   }
 }
