@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layoutsadmin.app')
 
 
 @section('content')
@@ -51,7 +51,7 @@
                   <td>{{ $sp->instansi }}</td>
                   <td>{{ $sp->judul }}</td>
                   <td>{{ $sp->kategori_sp }}</td>
-                  <td><center><a href="/sp/{{$sp->id}}/detilsp"><button type="button" class="btn btn-primary"><i class="fa fa-info-circle"></i></button></a></center></td>
+                  <td><center><a href="/sp/{{$sp->id}}/detilsp1"><button type="button" class="btn btn-primary"><i class="fa fa-info-circle"></i></button></a></center></td>
                   <td><center><a href="/sp/{{$sp->id}}/tambahdetil"><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i></button></a></center></td>
                 </tr>
                 @endforeach

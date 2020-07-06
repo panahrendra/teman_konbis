@@ -14,6 +14,10 @@ use App\Models\tbl_sp;
 use App\Models\tbl_aset;
 use App\Models\tbl_detil;
 use App\Models\kategori;
+use App\Models\tbl_progress;
+use App\Models\tbl_proses;
+use App\Models\tbl_detil_aset;
+use Auth;
 
 class tembisController extends Controller
 {
@@ -62,14 +66,31 @@ class tembisController extends Controller
         return view('/user/spuser', compact('sp_tb', 'sp_tb_detil'));
     }
 
-    public function detilsp($id)
+    public function detilspadmin($id)
+    {
+        $add = 'Addendum';
+        $sp_tb_detil = detil_sp::where('id_sp', 'LIKE', $id. '%')->first();
+        $sp_tb_add = detil_sp::where('id_sp', 'LIKE', $id. '%')
+                             ->where('jenis', 'LIKE', $add. '%')
+                             ->groupBy('jenis')
+                             ->get();
+        return view('/admin/detilsp', compact('sp_tb_detil', 'sp_tb_add'));
+    }
+
+    public function detilspuser($id)
     {
         $add = 'Addendum';
         $sp_tb_detil = detil_sp::where('id_sp', 'LIKE', $id. '%')->first();
         $sp_tb_add = detil_sp::where('id_sp', 'LIKE', $id. '%')
                              ->where('jenis', 'LIKE', $add. '%')
                              ->get();
-        return view('/admin/detilsp', compact('sp_tb_detil', 'sp_tb_add'));
+        return view('/user/detilsp', compact('sp_tb_detil', 'sp_tb_add'));
+    }
+
+    public function detilprogressadmin()
+    {
+        $detil_progress = tbl_progress::all();
+        return view('/admin/progress', ['detil_progress' => $detil_progress]);
     }
 
     public function user()
@@ -95,7 +116,6 @@ class tembisController extends Controller
         $data_konbis = data_konbis::all();
         return view('history', ['data_konbis' => $data_konbis]);
     }
-
 
     public function filter()
     {
@@ -205,6 +225,18 @@ class tembisController extends Controller
     public function store3(Request $request)
     {
         $tbl_detil = tbl_detil::create($request -> all());
+
+        $tbl_detil_aset = new tbl_detil_aset;
+        $tbl_detil_aset->id_detil_sp = $tbl_detil->id;
+        $tbl_detil_aset->id_aset = $request->id_aset;
+        $tbl_detil_aset->save();
+
+        $tbl_proses = new tbl_proses;
+        $tbl_proses->id_detil_sp = $tbl_detil->id;
+        $tbl_proses->tgl_progress = $tbl_detil->created_at;
+        $tbl_proses->id_user = Auth::user()->id;
+        $tbl_proses->save();
+
         return redirect('/sp')->with('Sukses','Detil No. '.$tbl_detil->id_sp.' Telah Ditambahkan');
     }    
 

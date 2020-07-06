@@ -10,5 +10,5 @@ class tbl_detil extends Model
 
 	protected $primaryKey = "id";
 
-	protected $fillable = ['id_sp','id_aset','jenis','objek_sp','tgl_mulai','tgl_selesai','nilai_fix','nilai_formula','history','keterangan'];
+	protected $fillable = ['id_sp','jenis','objek_sp','tgl_mulai','tgl_selesai','nilai_fix','nilai_formula','history','keterangan'];
 }

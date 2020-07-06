@@ -2,7 +2,6 @@
     <!-- sidebar: style can be found in sidebar.less -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        @if (auth('admin'))
         <li class="header">MENU BARU</li>
         <li class="">
           <a href="/sp">
@@ -23,7 +22,7 @@
           </ul>
         </li>
         <li class="">
-          <a href="">
+          <a href="/progress">
             <i class="fa fa-folder-open"></i><span>My Task</span>
           </a>
         </li>
@@ -32,34 +31,6 @@
             <i class="fa fa-envelope"></i><span>Pesan</span>
           </a>
         </li>
-        @else
-        <li class="header">MENU LAMA</li>
-        <li class="">
-          <a href="/user">
-            <i class="fa fa-user"></i><span>User</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="/dashboard">
-            <i class="fa fa-dashboard"></i><span>Dashboard</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="/history">
-            <i class="fa fa-history"></i><span>History</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="/approve">
-            <i class="fa fa-check"></i><span>Approve</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="/report">
-            <i class="fa fa-folder-open"></i><span>Report</span>
-          </a>
-        </li>
-        @endif
       </ul>
     </section>
     <!-- /.sidebar -->

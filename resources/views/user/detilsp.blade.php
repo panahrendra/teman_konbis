@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layoutsuser.app')
 
 
 @section('content')
@@ -33,7 +33,7 @@
                   <th id="tidak">JUDUL PERJANJIAN</th>
                   <th id="tidak">KATEGORI SP</th>
                   <th id="tidak">OBJEK SP</th>
-                  <th id="tidak">JENIS ASET</th>
+                  <th id="tidak">KETERANGAN ASET</th>
                   <th id="tidak">JENIS SP</th>
                   <th id="tidak">TANGGAL MULAI</th>
                   <th id="tidak">TANGGAL AKHIR</th>
@@ -51,7 +51,7 @@
                   <td>{{ $sp_tb_detil->judul }}</td>
                   <td>{{ $sp_tb_detil->kategori_sp }}</td>
                   <td><p>{{ $sp_tb_detil->objek_sp }}</p></td>
-                  <td>{{ $sp_tb_detil->aset }}</td>
+                  <td>{{ $sp_tb_detil->ket_aset }}</td>
                   <td>{{ $sp_tb_detil->jenis }}</td>
                   <td>{{ $sp_tb_detil->tgl_mulai }}</td>
                   <td>{{ $sp_tb_detil->tgl_selesai }}</td>
@@ -78,7 +78,7 @@
                   <th id="tidak">JUDUL PERJANJIAN</th>
                   <th id="tidak">KATEGORI SP</th>
                   <th id="tidak">OBJEK SP</th>
-                  <th id="tidak">JENIS ASET</th>
+                  <th id="tidak">KETERANGAN ASET</th>
                   <th id="tidak">JENIS SP</th>
                   <th id="tidak">TANGGAL MULAI</th>
                   <th id="tidak">TANGGAL AKHIR</th>
@@ -98,7 +98,7 @@
                   <td>{{ $sp->judul }}</td>
                   <td>{{ $sp->kategori_sp }}</td>
                   <td><p>{{ $sp->objek_sp }}</p></td>
-                  <td>{{ $sp->aset }}</td>
+                  <td>{{ $sp->ket_aset }}</td>
                   <td>{{ $sp->jenis }}</td>
                   <td>{{ $sp->tgl_mulai }}</td>
                   <td>{{ $sp->tgl_selesai }}</td>
@@ -112,7 +112,6 @@
               </table>
             </div>
           </div>
-
       <!-- /.box -->      
     </section>
 @endsection 
