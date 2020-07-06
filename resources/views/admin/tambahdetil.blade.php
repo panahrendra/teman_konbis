@@ -3,6 +3,12 @@
 
 @section('content')
     <section class="content-header">
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+      
       <h1>
         TAMBAH SURAT PERJANJIAN
         <br><small></small>
@@ -29,21 +35,26 @@
         </div>
           <div class="box-body">
             <!-- /.box-header -->
-            <form method="post" action="/sp/store2" class="form-horizontal">
+            <form method="post" action="/sp/store2" class="form-horizontal" id="">
               {{ csrf_field() }}
                 <table width="50%">
                   <input type="hidden" name="id_sp" class="form-control" value="{{ $tbl_sp->id }}">
 
                   <tr>
-                    <td class="col-sm-5" id="iya">Jenis ASET / JASA</td>
+                    <td class="col-sm-2" id="iya">Jenis ASET / JASA</td>
                     <td><?php echo "<font color='white'>..</font>"; ?></td>
-                    <td>
-                        <select class="form-control" name="id_aset">
-	                    	<option></option>		
-	                    	@foreach($tbl_aset as $ta)
-	                    	<option value="{{ $ta->id }}">{{ $ta->keterangan }}</option>
-	                    	@endforeach
-	                  	</select>
+                    <td class="form-group w-100">
+                      <select name="jenis_aset[]" multiple data-style="bg-white text-black" id="jenis_aset" class="selectpicker" style="border: 1px;">
+                        @foreach($tbl_aset as $ta)
+                          <option value="{{ $ta->id }}">{{ $ta->keterangan }}</option>
+                        @endforeach
+                      </select>
+                        {{-- <select id="jenis_aset" class="form-control" name="id_aset">
+                          <option></option>		
+                          @foreach($tbl_aset as $ta)
+                            <option value="{{ $ta->id }}">{{ $ta->keterangan }}</option>
+                          @endforeach
+                        </select> --}}
                     </td>
                   </tr>
                   
@@ -169,5 +180,10 @@
         </div>
 
       </div>
+      <script>
+        $(function () {
+          $('.selectpicker').selectpicker();
+        });
+      </script>
     </section>
 @endsection 

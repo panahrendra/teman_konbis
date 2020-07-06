@@ -14,6 +14,8 @@ use App\Models\tbl_sp;
 use App\Models\tbl_aset;
 use App\Models\tbl_detil;
 use App\Models\kategori;
+use App\Models\tbl_progress;
+use Auth;
 
 class tembisController extends Controller
 {
@@ -204,7 +206,14 @@ class tembisController extends Controller
 
     public function store3(Request $request)
     {
+        dd($request->all());
         $tbl_detil = tbl_detil::create($request -> all());
+        $tbl_progress = new tbl_progress;
+        $tbl_progress->id_detil_sp = $tbl_detil->id;
+        $tbl_progress->tgl_progress = $tbl_detil->created_at;
+        $tbl_progress->id_user = Auth::user()->id;
+        $tbl_progress->save();
+
         return redirect('/sp')->with('Sukses','Detil No. '.$tbl_detil->id_sp.' Telah Ditambahkan');
     }    
 
