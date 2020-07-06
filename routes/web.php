@@ -21,7 +21,8 @@ Route::get('/logout', 'LoginController@logout');;
 Route::group(['middleware' => 'auth:admin'], function(){
 	Route::get('/admin', 'tembisController@konbis');
 	Route::get('/sp', 'tembisController@konbis');
-	Route::get('/sp/{id}/detilsp', 'tembisController@detilsp');
+	Route::get('/sp/{id}/detilsp1', 'tembisController@detilspadmin');
+	Route::get('/progress', 'tembisController@detilprogressadmin');
 	Route::get('/sp/tambah', 'tembisController@tambah');
 	Route::get('/sp/tambahaset', 'tembisController@tambahaset');
 	Route::get('/sp/tambahkategori', 'tembisController@tambahkategori');
@@ -38,10 +39,7 @@ Route::group(['middleware' => 'auth:admin'], function(){
 
 Route::group(['middleware' => 'auth:user'], function(){
 	Route::get('/user', 'tembisController@konbisuser');
-	Route::get('/sp/{id}/detilsp', 'tembisController@detilsp');
-	Route::get('/muser', 'tembisController@user');
-	Route::get('/mkategori', 'tembisController@kategori');
-	Route::get('/maset', 'tembisController@aset');
+	Route::get('/sp/{id}/detilsp2', 'tembisController@detilspuser');
 });
 	
 

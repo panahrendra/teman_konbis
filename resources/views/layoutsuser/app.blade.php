@@ -43,16 +43,16 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  @include('layouts.sidebar')
+  @include('layoutsuser.sidebar')
 
 
-  @include('layouts.header')
+  @include('layoutsuser.header')
 
   <div class="content-wrapper">
       @yield('content')
   </div>
 
-@include('layouts.footer')
+@include('layoutsuser.footer')
 </div>
 <!-- ./wrapper -->
 
