@@ -15,11 +15,8 @@ use App\Models\tbl_aset;
 use App\Models\tbl_detil;
 use App\Models\kategori;
 use App\Models\tbl_progress;
-<<<<<<< HEAD
-=======
 use App\Models\tbl_proses;
 use App\Models\tbl_detil_aset;
->>>>>>> 6cfe2974b9947dcdc11cc37634dc9c6d740e2cdd
 use Auth;
 
 class tembisController extends Controller
@@ -229,25 +226,11 @@ class tembisController extends Controller
     {
         dd($request->all());
         $tbl_detil = tbl_detil::create($request -> all());
-<<<<<<< HEAD
         $tbl_progress = new tbl_progress;
         $tbl_progress->id_detil_sp = $tbl_detil->id;
         $tbl_progress->tgl_progress = $tbl_detil->created_at;
         $tbl_progress->id_user = Auth::user()->id;
         $tbl_progress->save();
-=======
-
-        $tbl_detil_aset = new tbl_detil_aset;
-        $tbl_detil_aset->id_detil_sp = $tbl_detil->id;
-        $tbl_detil_aset->id_aset = $request->id_aset;
-        $tbl_detil_aset->save();
-
-        $tbl_proses = new tbl_proses;
-        $tbl_proses->id_detil_sp = $tbl_detil->id;
-        $tbl_proses->tgl_progress = $tbl_detil->created_at;
-        $tbl_proses->id_user = Auth::user()->id;
-        $tbl_proses->save();
->>>>>>> 6cfe2974b9947dcdc11cc37634dc9c6d740e2cdd
 
         return redirect('/sp')->with('Sukses','Detil No. '.$tbl_detil->id_sp.' Telah Ditambahkan');
     }    
