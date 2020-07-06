@@ -224,7 +224,6 @@ class tembisController extends Controller
 
     public function store3(Request $request)
     {
-        dd($request->all());
         $tbl_detil = tbl_detil::create($request -> all());
         $tbl_progress = new tbl_progress;
         $tbl_progress->id_detil_sp = $tbl_detil->id;
