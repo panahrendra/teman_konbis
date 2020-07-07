@@ -226,10 +226,21 @@ class tembisController extends Controller
     {
         $tbl_detil = tbl_detil::create($request -> all());
 
-        $tbl_detil_aset = new tbl_detil_aset;
-        $tbl_detil_aset->id_detil_sp = $tbl_detil->id;
-        $tbl_detil_aset->id_aset = $request->id_aset;
-        $tbl_detil_aset->save();
+        // $tbl_detil_aset->timestamp = false ;
+        // dd($tbl_detil_aset, $tbl_detil, $request->all());
+        if($request->id_aset){
+            foreach($request->id_aset as $index => $item){
+                $tbl_detil_aset = new tbl_detil_aset;
+                $tbl_detil_aset->id_detil_sp = $tbl_detil->id;
+                $tbl_detil_aset->id_aset = $item;
+                $tbl_detil_aset->save();
+            }
+        }else{
+            $tbl_detil_aset = new tbl_detil_aset;
+            $tbl_detil_aset->id_detil_sp = $tbl_detil->id;
+            $tbl_detil_aset->id_aset = null;
+            $tbl_detil_aset->save();
+        }
 
         $tbl_proses = new tbl_proses;
         $tbl_proses->id_detil_sp = $tbl_detil->id;
