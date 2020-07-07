@@ -225,11 +225,17 @@ class tembisController extends Controller
     public function store3(Request $request)
     {
         $tbl_detil = tbl_detil::create($request -> all());
-        $tbl_progress = new tbl_progress;
-        $tbl_progress->id_detil_sp = $tbl_detil->id;
-        $tbl_progress->tgl_progress = $tbl_detil->created_at;
-        $tbl_progress->id_user = Auth::user()->id;
-        $tbl_progress->save();
+
+        $tbl_detil_aset = new tbl_detil_aset;
+        $tbl_detil_aset->id_detil_sp = $tbl_detil->id;
+        $tbl_detil_aset->id_aset = $request->id_aset;
+        $tbl_detil_aset->save();
+
+        $tbl_proses = new tbl_proses;
+        $tbl_proses->id_detil_sp = $tbl_detil->id;
+        $tbl_proses->tgl_progress = $tbl_detil->created_at;
+        $tbl_proses->id_user = Auth::user()->id;
+        $tbl_proses->save();
 
         return redirect('/sp')->with('Sukses','Detil No. '.$tbl_detil->id_sp.' Telah Ditambahkan');
     }    

@@ -44,12 +44,12 @@
                     <td class="col-sm-2" id="iya">Jenis ASET / JASA</td>
                     <td><?php echo "<font color='white'>..</font>"; ?></td>
                     <td class="form-group w-100">
-                      <select name="jenis_aset[]" multiple data-style="bg-white text-black" id="jenis_aset" class="selectpicker" style="border: 1px;">
+                      <select name="id_aset[]" multiple data-style="bg-white text-black" id="id_aset" class="selectpicker" style="border: 1px;">
                         @foreach($tbl_aset as $ta)
                           <option value="{{ $ta->id }}">{{ $ta->keterangan }}</option>
                         @endforeach
                       </select>
-                        {{-- <select id="jenis_aset" class="form-control" name="id_aset">
+                        {{-- <select id="id_aset" class="form-control" name="id_aset">
                           <option></option>		
                           @foreach($tbl_aset as $ta)
                             <option value="{{ $ta->id }}">{{ $ta->keterangan }}</option>
